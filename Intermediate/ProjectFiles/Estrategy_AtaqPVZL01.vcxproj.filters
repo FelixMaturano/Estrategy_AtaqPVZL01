@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Estrategy_AtaqPVZL01.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{4A1BC910-E4EB-4E17-B234-1D52C850C2A4}</UniqueIdentifier>
+      <UniqueIdentifier>{40C67D31-0BDD-42C9-8AF8-B4DE99F1A9EE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Estrategy_AtaqPVZL01.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\Estrategy_AtaqPVZL01Editor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{FCCAB437-F3B9-431F-AAA4-2AADDAE033E3}</UniqueIdentifier>
+      <UniqueIdentifier>{EB58FF1A-2C0F-45F8-828B-7538446CF679}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -24,8 +26,14 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Estrategy_AtaqPVZL01">
-      <UniqueIdentifier>{B08CD8EB-29D2-4779-8266-CEDC228A380F}</UniqueIdentifier>
+      <UniqueIdentifier>{993B25CF-2058-4229-9CAB-BAADE8E236DD}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.cpp">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClCompile>

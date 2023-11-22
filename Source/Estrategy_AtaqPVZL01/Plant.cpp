@@ -5,7 +5,7 @@
 #include "Projectile.h"
 #include "Zombie.h"
 #include "EstrategiaAtaqueDisparo.h"
-
+#include "EstrategiaAtaqueAZombies.h"
 // Sets default values
 APlant::APlant()
 {
@@ -25,21 +25,21 @@ APlant::APlant()
 	MeshPlanta->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 
-	//bCanFire = true;
-	//GunOffset = FVector(90.f, 0.f, 0.f);
-	//FireRate = 0.2f;
+	bCanFire = true;
+	GunOffset = FVector(90.f, 0.f, 0.f);
+	FireRate = 0.2f;
 
-	////Energia = 200;
-	//TiempoTranscurrido = 0.0f;
-	//TiempoEntreDisparos = 1.0f;
+	//Energia = 200;
+	TiempoTranscurrido = 0.0f;
+	TiempoEntreDisparos = 1.0f;
 }
 
 // Called when the game starts or when spawned
 void APlant::BeginPlay()
 {
 	Super::BeginPlay();
-	AEstrategiaAtaqueDisparo* EstrategiaAtaqueDisparo =  GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
-	setEstrategiaAtaqueAZombies(EstrategiaAtaqueDisparo);
+	AEstrategiaAtaqueDisparo* estrategiaAtaqueDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
+	setEstrategiaAtaqueAZombies(estrategiaAtaqueDisparo);
 
 }
 
@@ -57,12 +57,48 @@ void APlant::Tick(float DeltaTime)
 	//	FireShot(FVector(0.0f, 1.0f, 0.0f));
 	//	TiempoTranscurrido = 0.0f;
 	//}
+
+     disparar();
 }
 
-void APlant::setEstrategiaAtaqueAZombies(AActor* _EstrategiaAtaqueAZombies)
+float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	// Aqu? puedes manejar el da?o como desees, por ejemplo, actualizando la salud del actor.
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
+
+	Health -= Damage;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
+
+	// Devuelve la cantidad de da?o que se aplic? realmente.
+	return Health;
+}
+
+void APlant::MoveToTarget(FVector TargetLocation)
+{
+	FVector Direction = TargetLocation - FVector(-800.0f, 400.0f, 160.0f);
+	float DistanceToTarget = FVector::Dist(TargetLocation, FVector(-800.0f, 400.0f, 160.0f));
+
+	// Calcula el desplazamiento en este frame
+	float DeltaMove = MovementSpeed * GetWorld()->DeltaTimeSeconds;
+
+	if (DeltaMove > DistanceToTarget)
+	{
+		// Si el desplazamiento excede la distancia al objetivo, mueve directamente al objetivo
+		this->SetActorLocation(TargetLocation);
+
+	}
+	else
+	{
+		// Mueve el objeto en la direcci?n calculada
+		this->AddActorWorldOffset(Direction * DeltaMove);
+
+	}
+}
+
+void APlant::setEstrategiaAtaqueAZombies(AActor* _estrategiaAtaqueAZombies)
 {
 
-	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_EstrategiaAtaqueAZombies);
+	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_estrategiaAtaqueAZombies);
 
 	//Log Error if the cast failed
 	if (!EstrategiaAtaque)
@@ -76,15 +112,17 @@ void APlant::setEstrategiaAtaqueAZombies(AActor* _EstrategiaAtaqueAZombies)
 
 void APlant::disparar()
 {
-
-
-	EstrategiaAtaque ->atacarA(this, FVector(0.0f, 1.0f, 0.0f));
-
-
+	EstrategiaAtaque->atacarA(this, FVector(0.0f, 1.0f, 0.0f));
 
 }
 
-//
+void APlant::ShotTimerExpired()
+{
+	bCanFire = true;
+}
+
+
+
 //float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 //{
 //	// Aquí puedes manejar el daño como desees, por ejemplo, actualizando la salud del actor.

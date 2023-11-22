@@ -35,7 +35,7 @@ private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
-	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
+	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
 	DECLARE_SERIALIZER(AZombie)
 
 
@@ -44,14 +44,14 @@ private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
-	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
+	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
 	DECLARE_SERIALIZER(AZombie)
 
 
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_12_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AZombie(const FObjectInitializer& ObjectInitializer); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AZombie) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AZombie) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AZombie); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AZombie); \
 private: \
@@ -69,7 +69,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AZombie); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AZombie); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AZombie)
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(AZombie)
 
 
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_12_PRIVATE_PROPERTY_OFFSET

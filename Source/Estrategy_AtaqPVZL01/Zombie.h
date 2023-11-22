@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Zombie.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor
 {
 	GENERATED_BODY()
