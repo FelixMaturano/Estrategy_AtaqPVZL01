@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Estrategy_AtaqPVZL01.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{4A1BC910-E4EB-4E17-B234-1D52C850C2A4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Estrategy_AtaqPVZL01.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\Estrategy_AtaqPVZL01Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FCCAB437-F3B9-431F-AAA4-2AADDAE033E3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Estrategy_AtaqPVZL01">
+      <UniqueIdentifier>{B08CD8EB-29D2-4779-8266-CEDC228A380F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueDisparo.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueDisparo.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01.Build.cs">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01GameModeBase.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01GameModeBase.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Plant.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Plant.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Projectile.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Projectile.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Zombie.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Zombie.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
