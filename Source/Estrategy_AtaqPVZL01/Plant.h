@@ -41,7 +41,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	// disparo  --------------
 	float DamageGenerates = 10.0f;
-	float Health = 500.0f;
+	float Health = 50.0f;
 	float SpawnAfter = 0.0f;
 	float MovementSpeed = 6.1f;
 	bool bCanMove = false;
@@ -62,10 +62,10 @@ public:
 
 	//void NotifyActorBeginOverlap(AActor* OtherActor);
 
+	float timerhandle;
 
 
-
-	void disparar();
+	void atacar();
 	//------------------------------------------------------
 public:
 	/** Offset from the ships location to spawn projectiles */
@@ -108,4 +108,5 @@ public:
 	// Manejador para una gestión eficiente del temporizador ShotTimerExpired 
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
+	
 };

@@ -18,10 +18,10 @@ APlant::APlant()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> PlantaMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cylinder.Shape_Cylinder'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> PlantaMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cone.Shape_Cone'"));
 	MeshPlanta = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
 	MeshPlanta->SetStaticMesh(PlantaMesh.Object);
-	MeshPlanta->SetRelativeScale3D(FVector(0.15f, 0.15f, 0.35f));
+	MeshPlanta->SetRelativeScale3D(FVector(0.25f, 0.29f, 0.35f));
 
 	RootComponent = MeshPlanta;
 
@@ -69,7 +69,21 @@ void APlant::Tick(float DeltaTime)
 	//	TiempoTranscurrido = 0.0f;
 	//}
 
-     disparar();
+
+	//if (HealthZ >0)
+	//{
+	//	 //MoveToTarget(FVector(-800.0f, -600.0f, 160.0f));
+//	if()
+	
+	 timerhandle += DeltaTime;
+
+	// if (timerhandle >= 2.0f) {
+		 atacar();
+	 //}
+	 //else if (timerhandle >= 4.0f) {
+		// MoveToTarget(FVector(-250.0f, 490.0f, 25.0f));
+	 //}
+	
 }
 
 float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -86,8 +100,8 @@ float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AControl
 
 void APlant::MoveToTarget(FVector TargetLocation)
 {
-	FVector Direction = TargetLocation - FVector(-800.0f, 400.0f, 160.0f);
-	float DistanceToTarget = FVector::Dist(TargetLocation, FVector(-800.0f, 400.0f, 160.0f));
+	FVector Direction = TargetLocation - FVector(-250.0f, 490.0f, 25.0f);
+	float DistanceToTarget = FVector::Dist(TargetLocation, FVector(-250.0f, 490.0f, 25.0f));
 
 	// Calcula el desplazamiento en este frame
 	float DeltaMove = MovementSpeed * GetWorld()->DeltaTimeSeconds;
@@ -121,7 +135,7 @@ void APlant::setEstrategiaAtaqueAZombies(AActor* _estrategiaAtaqueAZombies)
 
 }
 
-void APlant::disparar()
+void APlant::atacar()
 {
 	EstrategiaAtaque->atacarA(this, FVector(0.0f, 1.0f, 0.0f));
 
@@ -134,18 +148,8 @@ void APlant::ShotTimerExpired()
 
 
 
-//float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
-//{
-//	// Aquí puedes manejar el daño como desees, por ejemplo, actualizando la salud del actor.
-//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
-//
-//	Health -= Damage;
-//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
-//
-//	// Devuelve la cantidad de daño que se aplicó realmente.
-//	return Health;
-//}
-//
+
+
 //void APlant::NotifyActorBeginOverlap(AActor* OtherActor)
 //{
 //	AZombie* Zombie = Cast<AZombie>(OtherActor);
@@ -163,5 +167,4 @@ void APlant::ShotTimerExpired()
 //		}
 //	}
 //}
-//
-//
+

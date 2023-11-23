@@ -29,6 +29,10 @@ void AEstrategiaAtaqueDisparo::Tick(float DeltaTime)
 
 void AEstrategiaAtaqueDisparo::atacarA(APlant* _plantaActual, FVector _ubicacionObjetivo)
 {
+
+    UE_LOG(LogTemp, Warning, TEXT("Dispirando al Zombies"));
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Disparando al zombie"));
+
     APlant* planta;
     planta = _plantaActual;
 

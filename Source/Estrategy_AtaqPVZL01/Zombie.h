@@ -51,7 +51,8 @@ public:
 
 
 	float DamageGenerates = 10.f;
-	float Health = 10000.0f;
+	float Health = 10.0f;
+
 	float SpawnAfter = 0.0f;
 	float MovementSpeed = 6.1f;
 	bool bCanMove = false;
@@ -66,4 +67,9 @@ public:
 
 	float MovingX = 300.0f;
 	void SetMovingX(float _MovingX);
+
+	FVector StartLocation;
+	FVector EndLocation;
+
+	void iniciarMovimiento();
 };

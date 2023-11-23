@@ -8,11 +8,14 @@
 #include"EstrategiaAtaqueDisparo.h"
 #include "EstrategiaAplastamientoAZ.h"
 
+
 AEstrategy_AtaqPVZL01GameModeBase::AEstrategy_AtaqPVZL01GameModeBase()
 {
 
 	PrimaryActorTick.bCanEverTick = true;
 }
+
+
 
 void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 {
@@ -25,7 +28,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 	FVector SpawnLocationZombie = FVector(-250.0f, 490.0f, 25.0f);
 
 	//Genera 5 zombies
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < 1; i++) {
 		//	 Define una posición temporal para el zombie en X
 		SpawnLocationZombie.X += 100;
 		//Aparicion de los zombies
@@ -33,7 +36,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 
 		NuevoZombie = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
 
-		NuevoZombie->Velocidad = FMath::FRandRange(0.01f, 0.05f);
+		NuevoZombie->Velocidad = 0.18;//FMath::FRandRange(0.01f, 0.3f);
 
 		NuevoZombie->SetActorHiddenInGame(false);      // Haz que el actor sea visible
 		NuevoZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
@@ -49,7 +52,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 	FVector SpawnLocationPlant = FVector(-250.0f, -440.0f, 25.0f);
 
 	//Genera 5 zombies
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < 1; i++) {
 		//	 Define una posición temporal para el zombie en X
 		SpawnLocationPlant.X += 100;
 		//Aparicion de los zombies
@@ -72,15 +75,17 @@ void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 	////TiempoTranscurrido += DeltaTime;
 
 	timerhandle += DeltaTime;
-
-	if (timerhandle >= 2.0f) {
+	APlant *plantas ;
+	if (timerhandle >= 9.0f) {
 		for (int32 i = 0; i < Plantass.Num(); i++) {
-			APlant* platas = Cast<APlant>(Plantass[i]);
-			if (platas) {
-				platas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
+			plantas = Cast<APlant>(Plantass[i]);
+			if (plantas) {
+				plantas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
+
 			}
 		}
 	}
+
 
 	//TiempoTranscurrido += DeltaTime;
 
