@@ -6,6 +6,11 @@
 #include "Zombie.h"
 #include "EstrategiaAtaqueDisparo.h"
 #include "EstrategiaAtaqueAZombies.h"
+
+#include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
+
+
 // Sets default values
 APlant::APlant()
 {
@@ -32,6 +37,11 @@ APlant::APlant()
 	//Energia = 200;
 	TiempoTranscurrido = 0.0f;
 	TiempoEntreDisparos = 1.0f;
+
+	DamageGenerates = 10.0f;
+	Health = 50.0f;
+	MovementSpeed = 0.1f;
+	bCanMove = false;
 }
 
 // Called when the game starts or when spawned
@@ -40,6 +50,7 @@ void APlant::BeginPlay()
 	Super::BeginPlay();
 	AEstrategiaAtaqueDisparo* estrategiaAtaqueDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
 	setEstrategiaAtaqueAZombies(estrategiaAtaqueDisparo);
+
 
 }
 

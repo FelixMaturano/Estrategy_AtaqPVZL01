@@ -9,7 +9,6 @@
 
 class APlant;
 class AZombie;
-class AProjectile;
 UCLASS()
 class ESTRATEGY_ATAQPVZL01_API AEstrategiaAtaqueDisparo : public AActor, public IEstrategiaAtaqueAZombies
 {

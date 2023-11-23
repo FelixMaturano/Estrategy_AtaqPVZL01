@@ -6,6 +6,7 @@
 #include "Zombie.h"
 
 #include"EstrategiaAtaqueDisparo.h"
+#include "EstrategiaAplastamientoAZ.h"
 
 AEstrategy_AtaqPVZL01GameModeBase::AEstrategy_AtaqPVZL01GameModeBase()
 {
@@ -17,7 +18,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	EstrategiaAtaqueDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
+	EstrategiaAplastamientoAZ = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
 
 
 	//Definiendo la posición de los zombies
@@ -64,6 +65,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 	
 }
 
+
 void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -75,7 +77,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 		for (int32 i = 0; i < Plantas.Num(); i++) {
 			APlant* platas = Cast<APlant>(Plantas[i]);
 			if (platas) {
-				platas->setEstrategiaAtaqueAZombies(EstrategiaAtaqueDisparo);
+				platas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
 			}
 		}
 	}
@@ -94,4 +96,19 @@ void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 
 	//	TiempoTranscurrido = 0.0f;
 	//}
+}
+APlant* AEstrategy_AtaqPVZL01GameModeBase::SpawnPlantas(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocation);
+
+}
+
+AZombie* AEstrategy_AtaqPVZL01GameModeBase::SpawnZombies(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocation);
+
 }

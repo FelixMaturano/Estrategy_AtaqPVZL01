@@ -4,6 +4,8 @@
 #include "EstrategiaAplastamientoAZ.h"
 #include "Plant.h"
 #include "Zombie.h"
+#include <Kismet/GameplayStatics.h>
+#include "TimerManager.h"
 
 // Sets default values
 AEstrategiaAplastamientoAZ::AEstrategiaAplastamientoAZ()
@@ -38,49 +40,49 @@ void AEstrategiaAplastamientoAZ::atacarA(APlant* _plantaActual, FVector _ubicaci
     for (int32 i = 0; i < Zombies.Num(); i++)
     {
         // comparar la posicion x de la Planta con la del zombie
-        if (FMath::IsNearlyEqual(Zombies[i]->GetActorLocation().X, Zombies->GetActorLocation().X, 0.1f))
+        if (FMath::IsNearlyEqual(Zombies[i]->GetActorLocation().X, plant->GetActorLocation().X, 0.1f))
         {
             // guardar la ubicacion inicial del zombie y la distancia inicial y no entrar más al if
-            if (Zombies->DistanciaInicial == 0.0f)
+            if (plant->DistanciaInicial == 0.0f)
             {
-                Zombie->UbicacionInicial = Zombies->GetActorLocation();
-                Zombie->DistanciaInicial = FVector::Dist(Zombies->UbicacionInicial, Zombies[i]->GetActorLocation());
+                plant->UbicacionInicial = plant->GetActorLocation();
+                plant->DistanciaInicial = FVector::Dist(plant->UbicacionInicial, Zombies[i]->GetActorLocation());
             }
 
             // si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
-            float AlturaSaltoInicial = Zombies->AlturaSalto; // Almacena la altura de salto inicial
+            float AlturaSaltoInicial = plant->AlturaSalto; // Almacena la altura de salto inicial
 
-            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->AlturaSalto);
+            plant->LocalizacionObjetivo = Zombies[i]->GetActorLocation() + FVector(0.0f, 0.0f, plant->AlturaSalto);
 
             // Calcula la distancia recorrida en el salto
-            float DistanciaRecorrida = FVector::Dist(Zombie->UbicacionInicial, Zombie->GetActorLocation());
+            float DistanciaRecorrida = FVector::Dist(plant->UbicacionInicial, plant->GetActorLocation());
 
             // Ajusta la altura del objetivo en función de la velocidad y la proporción recorrida
 
-            Zombie->AlturaSalto = FMath::Max(AlturaSaltoInicial * (1.0f - DistanciaRecorrida / Zombie->DistanciaInicial) * Zombie->MovementSpeed / 200.0f, 0.0f);
+            plant->AlturaSalto = FMath::Max(AlturaSaltoInicial * (1.0f - DistanciaRecorrida / plant->DistanciaInicial) * plant->MovementSpeed / 200.0f, 0.0f);
 
             // calcula la direccion y distancia al objetivo
-            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
+            plant->Direccion = (plant->LocalizacionObjetivo - plant->GetActorLocation()).GetSafeNormal();
             // calcula la distancia al objetivo
-            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
+            plant->DistanciaAlObjetivo = FVector::Dist(plant->LocalizacionObjetivo, plant->GetActorLocation());
 
-            float DeltaMove = _zombieActual->MovementSpeed * GetWorld()->DeltaTimeSeconds;
+            float DeltaMove = _plantaActual->MovementSpeed * GetWorld()->DeltaTimeSeconds;
 
-            if (DeltaMove > Zombie->DistanciaAlObjetivo)
+            if (DeltaMove > plant->DistanciaAlObjetivo)
             {
                 // Si el desplazamiento excede la distancia al objetivo, mueve directamente al objetivo
-                _zombieActual->SetActorLocation(_ubicacionDestino);
+                _plantaActual->SetActorLocation(_ubicacionObjetivo);
 
             }
             else
             {
                 // Mueve el objeto en la direcci�n calculada
-                _zombieActual->AddActorWorldOffset(Zombie->Direccion * DeltaMove);
+                _plantaActual->AddActorWorldOffset(plant->Direccion * DeltaMove);
             }
 
         }
     }
-    Plantas.Empty();
+    Zombies.Empty();
     //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Zombie estrategia saltar"));
 
 

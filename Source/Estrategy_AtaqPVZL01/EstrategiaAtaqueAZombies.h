@@ -7,6 +7,7 @@
 #include "EstrategiaAtaqueAZombies.generated.h"
 
 class APlant;
+class AZombie;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UEstrategiaAtaqueAZombies : public UInterface

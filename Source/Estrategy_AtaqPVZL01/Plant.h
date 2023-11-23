@@ -7,6 +7,7 @@
 #include "EstrategiaAtaqueAZombies.h"
 #include "Plant.generated.h"
 
+
 UCLASS()
 class ESTRATEGY_ATAQPVZL01_API APlant : public AActor
 {
@@ -18,7 +19,7 @@ public:
 
 
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* MeshPlanta;
+	class UStaticMeshComponent* MeshPlanta;
 
 	IEstrategiaAtaqueAZombies* EstrategiaAtaque;
 

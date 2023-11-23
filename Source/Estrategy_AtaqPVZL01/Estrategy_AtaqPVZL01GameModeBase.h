@@ -12,8 +12,9 @@
 
 class APlant;
 class AZombie;
-class AEstrategiaAtaqueDisparo;
-UCLASS()
+//class AEstrategiaAtaqueDisparo;
+class AEstrategiaAplastamientoAZ;
+UCLASS(MinimalAPI)
 class ESTRATEGY_ATAQPVZL01_API AEstrategy_AtaqPVZL01GameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
@@ -22,8 +23,8 @@ public:
 	AEstrategy_AtaqPVZL01GameModeBase();
 
 	float timerhandle;
-	AEstrategiaAtaqueDisparo* EstrategiaAtaqueDisparo;
-
+	
+	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZ;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -38,4 +39,7 @@ public:
 	TArray<AZombie*> Zombies;
 	AZombie* NuevoZombie;
 	
+
+	class APlant* SpawnPlantas(FVector _spawnPosition);
+	class AZombie* SpawnZombies(FVector _spawnPosition);
 };
