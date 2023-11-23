@@ -10,11 +10,9 @@
  * 
  */
 
-class APlant;
-class AZombie;
-//class AEstrategiaAtaqueDisparo;
+class AEstrategiaAtaqueDisparo;
 class AEstrategiaAplastamientoAZ;
-UCLASS(MinimalAPI)
+UCLASS()
 class ESTRATEGY_ATAQPVZL01_API AEstrategy_AtaqPVZL01GameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
@@ -32,11 +30,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	TArray< APlant* > Plantas;
+	TArray< class APlant* > Plantass;
 	APlant* NuevaPlanta;
 
 	float TiempoTranscurrido;
-	TArray<AZombie*> Zombies;
+	TArray<class AZombie*> Zombies;
 	AZombie* NuevoZombie;
 	
 

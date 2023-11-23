@@ -58,7 +58,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 		NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlant, FRotator::ZeroRotator);
 		NuevaPlanta->SetActorEnableCollision(true);
 
-		Plantas.Add(NuevaPlanta);
+		Plantass.Add(NuevaPlanta);
 
 	}
 
@@ -74,8 +74,8 @@ void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 	timerhandle += DeltaTime;
 
 	if (timerhandle >= 2.0f) {
-		for (int32 i = 0; i < Plantas.Num(); i++) {
-			APlant* platas = Cast<APlant>(Plantas[i]);
+		for (int32 i = 0; i < Plantass.Num(); i++) {
+			APlant* platas = Cast<APlant>(Plantass[i]);
 			if (platas) {
 				platas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
 			}

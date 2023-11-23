@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ESTRATEGY_ATAQPVZL01_Plant_generated_h
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_SPARSE_DATA
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_RPC_WRAPPERS
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_RPC_WRAPPERS_NO_PURE_DECLS
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_INCLASS_NO_PURE_DECLS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_SPARSE_DATA
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_RPC_WRAPPERS
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPlant(); \
 	friend struct Z_Construct_UClass_APlant_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(APlant)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_INCLASS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAPlant(); \
 	friend struct Z_Construct_UClass_APlant_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(APlant)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_STANDARD_CONSTRUCTORS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APlant(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APlant) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_ENHANCED_CONSTRUCTORS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APlant(APlant&&); \
@@ -58,28 +58,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APlant)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_PRIVATE_PROPERTY_OFFSET
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_10_PROLOG
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_GENERATED_BODY_LEGACY \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_PRIVATE_PROPERTY_OFFSET
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_11_PROLOG
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_PRIVATE_PROPERTY_OFFSET \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_SPARSE_DATA \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_RPC_WRAPPERS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_INCLASS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_STANDARD_CONSTRUCTORS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_PRIVATE_PROPERTY_OFFSET \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_SPARSE_DATA \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_RPC_WRAPPERS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_INCLASS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_GENERATED_BODY \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_PRIVATE_PROPERTY_OFFSET \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_SPARSE_DATA \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_INCLASS_NO_PURE_DECLS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_13_ENHANCED_CONSTRUCTORS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_PRIVATE_PROPERTY_OFFSET \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_SPARSE_DATA \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_INCLASS_NO_PURE_DECLS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Plant_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
