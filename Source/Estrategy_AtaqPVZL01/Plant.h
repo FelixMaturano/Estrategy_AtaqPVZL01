@@ -5,31 +5,43 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "EstrategiaAtaqueAZombies.h"
+#include "PlantaObservador.h"
+#include"EstrategiaAplastamientoAZ.h"
+#include "Components/BoxComponent.h"
 #include "Plant.generated.h"
 
 
 UCLASS()
-class ESTRATEGY_ATAQPVZL01_API APlant : public AActor
+class ESTRATEGY_ATAQPVZL01_API APlant : public AActor, public IPlantaObservador
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
-	APlant();	// Sets default values for this actor's properties
-
+	
+	APlant();	
 
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* MeshPlanta;
 
 	IEstrategiaAtaqueAZombies* EstrategiaAtaque;
+	//IEstrategiaAtaqueDisparo* EstrategiaAtaqueDisparo;
+	//IEstrategiaAtaqueAplastamiento* EstrategiaAtaqueAplastamiento;
 
-	float AlturaSalto = 0.0f;
+	float AlturaSalto = 8.0f;
 	float DistanciaInicial;
 	FVector UbicacionInicial;
 	FVector LocalizacionObjetivo;
 	FVector Direccion;
 	float DistanciaAlObjetivo;
 
+	// nuesta funcion de notificacion******************************************************
+	IPlantaObservador* notificador;
+	virtual void NotificadoPorZombie(const FVector& PosicionZombie) override;
+	void notificarOtrasPlantas();
+	void setNotificarOtrasPlantas(AActor* _notificarOtrasPlantas);
+	
+
+	void CambiarEstrategia();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -43,7 +55,7 @@ public:
 	float DamageGenerates = 10.0f;
 	float Health = 50.0f;
 	float SpawnAfter = 0.0f;
-	float MovementSpeed = 6.1f;
+	float MovementSpeed ;
 	bool bCanMove = false;
 
 	float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser);
@@ -55,39 +67,23 @@ public:
 	FORCEINLINE float GetSpawnAfter() { return SpawnAfter; }
 	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }
 
-	void setEstrategiaAtaqueAZombies(AActor* _estrategiaAtaqueAZombies);
-	//void moverse();
-
-
-
-	//void NotifyActorBeginOverlap(AActor* OtherActor);
-
+	void setEstrategiaAtaqueAZombies(IEstrategiaAtaqueAZombies* _estrategiaAtaqueAZombies);
 	float timerhandle;
 
-
-	void atacar();
-	//------------------------------------------------------
+	void atacar(const FVector& TargetLocation);
+	
 public:
-	/** Offset from the ships location to spawn projectiles */
-	// Desplazamiento desde la ubicación de la nave para generar proyectiles 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	FVector GunOffset;
+	
 	FVector GetGunOffset() const { return GunOffset; }
 	void SetGunOffset(FVector Value) { GunOffset = Value; }
 
-	/* How fast the weapon will fire */
 	// La velocidad a la que el arma disparará 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float FireRate;
-
-	/* Fire a shot in the specified direction */
-	// Disparar un proyectil en la dirección especificada 
-	///////void FireShot(FVector FireDirection);
-
-	/* Handler for the fire timer expiry */
-	// Manejador para la expiración del temporizador de disparo 
+	
 	void ShotTimerExpired();
-
 
 	float TiempoTranscurrido;
 	float TiempoEntreDisparos;
@@ -96,17 +92,16 @@ public:
 
 public:
 
-	FString NombrePlantas;
-
-	/* Flag to control firing  */
+	
 	// Bandera para controlar el disparo 
 	uint32 bCanFire : 1;
 	uint32 GetCanFire() const { return bCanFire; }
 	void SetCanFire(uint32 Value) { bCanFire = Value; }
 
-	/** Handle for efficient management of ShotTimerExpired timer */
 	// Manejador para una gestión eficiente del temporizador ShotTimerExpired 
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
-	
+	bool bHaSidoNotificada = false;
+	APlant* esto;
+
 };

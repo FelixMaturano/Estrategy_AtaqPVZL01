@@ -8,7 +8,6 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Engine/StaticMesh.h"
 
-#include "Plant.h"
 
 // Sets default values
 AProjectile::AProjectile()

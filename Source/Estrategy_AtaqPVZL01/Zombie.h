@@ -13,9 +13,25 @@ class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AZombie();
 
+public:
+	// metodo de notificacion******************************************************
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	void MoverZombie();
+
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	void SuscribirPlanta(TScriptInterface<IPlantaObservador> Observador);
+
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	void DesuscribirPlanta(TScriptInterface<IPlantaObservador> Observador);
+private:
+	UPROPERTY()
+	TArray<TScriptInterface<IPlantaObservador>> Observadores;
+
+	UPROPERTY(EditAnywhere, Category = "Gameplay")
+	float CoordenadaCruceZombie;
+	//--------------------------------------------------------------------------
 public:
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* ZombieMeshComponent;
@@ -47,8 +63,6 @@ public:
 
 	FString TagString;
 
-	// colisiones 
-
 
 	float DamageGenerates = 10.f;
 	float Health = 10.0f;
@@ -66,10 +80,14 @@ public:
 	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }
 
 	float MovingX = 300.0f;
-	void SetMovingX(float _MovingX);
 
 	FVector StartLocation;
 	FVector EndLocation;
 
 	void iniciarMovimiento();
+
+
+	bool bHaNotificado=false;
+private:
+	FVector CurrentLocation;
 };

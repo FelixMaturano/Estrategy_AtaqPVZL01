@@ -19,6 +19,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 	UPackage* Z_Construct_UPackage__Script_Estrategy_AtaqPVZL01();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_UPlantaObservador_NoRegister();
 // End Cross Module References
 	void APlant::StaticRegisterNativesAPlant()
 	{
@@ -46,6 +47,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -62,28 +64,24 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlant_Statics::NewProp_MeshPlanta_MetaData[] = {
 		{ "Category", "Plant" },
-		{ "Comment", "// Sets default values for this actor's properties\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Plant.h" },
-		{ "ToolTip", "Sets default values for this actor's properties" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_MeshPlanta = { "MeshPlanta", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, MeshPlanta), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_MeshPlanta_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_MeshPlanta_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlant_Statics::NewProp_GunOffset_MetaData[] = {
 		{ "Category", "Gameplay" },
-		{ "Comment", "/** Offset from the ships location to spawn projectiles */// Desplazamiento desde la ubicaci?n de la nave para generar proyectiles \n" },
 		{ "ModuleRelativePath", "Plant.h" },
-		{ "ToolTip", "Offset from the ships location to spawn projectiles // Desplazamiento desde la ubicaci?n de la nave para generar proyectiles" },
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_GunOffset = { "GunOffset", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, GunOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_GunOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_GunOffset_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlant_Statics::NewProp_FireRate_MetaData[] = {
 		{ "Category", "Gameplay" },
-		{ "Comment", "/* How fast the weapon will fire */// La velocidad a la que el arma disparar? \n" },
+		{ "Comment", "// La velocidad a la que el arma disparar? \n" },
 		{ "ModuleRelativePath", "Plant.h" },
-		{ "ToolTip", "How fast the weapon will fire // La velocidad a la que el arma disparar?" },
+		{ "ToolTip", "La velocidad a la que el arma disparar?" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_FireRate = { "FireRate", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, FireRate), METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_FireRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_FireRate_MetaData)) };
@@ -92,6 +90,9 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_GunOffset,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_FireRate,
 	};
+		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_APlant_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UPlantaObservador_NoRegister, (int32)VTABLE_OFFSET(APlant, IPlantaObservador), false },
+		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlant_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlant>::IsAbstract,
 	};
@@ -102,11 +103,11 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		DependentSingletons,
 		nullptr,
 		Z_Construct_UClass_APlant_Statics::PropPointers,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::PropPointers),
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::Class_MetaDataParams))
 	};
@@ -119,7 +120,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlant, 3299994955);
+	IMPLEMENT_CLASS(APlant, 575155280);
 	template<> ESTRATEGY_ATAQPVZL01_API UClass* StaticClass<APlant>()
 	{
 		return APlant::StaticClass();

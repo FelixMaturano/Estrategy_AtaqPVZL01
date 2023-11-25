@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_AZombie();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_Estrategy_AtaqPVZL01();
+	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_UPlantaObservador_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -48,14 +49,98 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		P_THIS->OnOverlapBeginFunction(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AZombie::execDesuscribirPlanta)
+	{
+		P_GET_TINTERFACE(IPlantaObservador,Z_Param_Observador);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DesuscribirPlanta(Z_Param_Observador);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AZombie::execSuscribirPlanta)
+	{
+		P_GET_TINTERFACE(IPlantaObservador,Z_Param_Observador);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SuscribirPlanta(Z_Param_Observador);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AZombie::execMoverZombie)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->MoverZombie();
+		P_NATIVE_END;
+	}
 	void AZombie::StaticRegisterNativesAZombie()
 	{
 		UClass* Class = AZombie::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "DesuscribirPlanta", &AZombie::execDesuscribirPlanta },
+			{ "MoverZombie", &AZombie::execMoverZombie },
 			{ "OnHit", &AZombie::execOnHit },
 			{ "OnOverlapBeginFunction", &AZombie::execOnOverlapBeginFunction },
+			{ "SuscribirPlanta", &AZombie::execSuscribirPlanta },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics
+	{
+		struct Zombie_eventDesuscribirPlanta_Parms
+		{
+			TScriptInterface<IPlantaObservador> Observador;
+		};
+		static const UE4CodeGen_Private::FInterfacePropertyParams NewProp_Observador;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FInterfacePropertyParams Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::NewProp_Observador = { "Observador", nullptr, (EPropertyFlags)0x0014000000000080, UE4CodeGen_Private::EPropertyGenFlags::Interface, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(Zombie_eventDesuscribirPlanta_Parms, Observador), Z_Construct_UClass_UPlantaObservador_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::NewProp_Observador,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Gameplay" },
+		{ "ModuleRelativePath", "Zombie.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombie, nullptr, "DesuscribirPlanta", nullptr, nullptr, sizeof(Zombie_eventDesuscribirPlanta_Parms), Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AZombie_DesuscribirPlanta()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AZombie_DesuscribirPlanta_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AZombie_MoverZombie_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AZombie_MoverZombie_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Gameplay" },
+		{ "Comment", "// metodo de notificacion******************************************************\n" },
+		{ "ModuleRelativePath", "Zombie.h" },
+		{ "ToolTip", "metodo de notificacion******************************************************" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombie_MoverZombie_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombie, nullptr, "MoverZombie", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AZombie_MoverZombie_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombie_MoverZombie_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AZombie_MoverZombie()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AZombie_MoverZombie_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AZombie_OnHit_Statics
 	{
@@ -210,6 +295,39 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics
+	{
+		struct Zombie_eventSuscribirPlanta_Parms
+		{
+			TScriptInterface<IPlantaObservador> Observador;
+		};
+		static const UE4CodeGen_Private::FInterfacePropertyParams NewProp_Observador;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FInterfacePropertyParams Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::NewProp_Observador = { "Observador", nullptr, (EPropertyFlags)0x0014000000000080, UE4CodeGen_Private::EPropertyGenFlags::Interface, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(Zombie_eventSuscribirPlanta_Parms, Observador), Z_Construct_UClass_UPlantaObservador_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::NewProp_Observador,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Gameplay" },
+		{ "ModuleRelativePath", "Zombie.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombie, nullptr, "SuscribirPlanta", nullptr, nullptr, sizeof(Zombie_eventSuscribirPlanta_Parms), Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AZombie_SuscribirPlanta()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AZombie_SuscribirPlanta_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AZombie_NoRegister()
 	{
 		return AZombie::StaticClass();
@@ -221,6 +339,15 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+		static const UE4CodeGen_Private::FInterfacePropertyParams NewProp_Observadores_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Observadores_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_Observadores;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CoordenadaCruceZombie_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_CoordenadaCruceZombie;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ZombieMeshComponent_MetaData[];
 #endif
@@ -242,8 +369,11 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Estrategy_AtaqPVZL01,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AZombie_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AZombie_DesuscribirPlanta, "DesuscribirPlanta" }, // 1062653681
+		{ &Z_Construct_UFunction_AZombie_MoverZombie, "MoverZombie" }, // 2776328871
 		{ &Z_Construct_UFunction_AZombie_OnHit, "OnHit" }, // 512965116
 		{ &Z_Construct_UFunction_AZombie_OnOverlapBeginFunction, "OnOverlapBeginFunction" }, // 1851961383
+		{ &Z_Construct_UFunction_AZombie_SuscribirPlanta, "SuscribirPlanta" }, // 1283088379
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::Class_MetaDataParams[] = {
@@ -251,6 +381,20 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		{ "ModuleRelativePath", "Zombie.h" },
 	};
 #endif
+	const UE4CodeGen_Private::FInterfacePropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_Observadores_Inner = { "Observadores", nullptr, (EPropertyFlags)0x0004000000000000, UE4CodeGen_Private::EPropertyGenFlags::Interface, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_UPlantaObservador_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_Observadores_MetaData[] = {
+		{ "ModuleRelativePath", "Zombie.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_Observadores = { "Observadores", nullptr, (EPropertyFlags)0x0044000000000000, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, Observadores), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_Observadores_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_Observadores_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_CoordenadaCruceZombie_MetaData[] = {
+		{ "Category", "Gameplay" },
+		{ "ModuleRelativePath", "Zombie.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_CoordenadaCruceZombie = { "CoordenadaCruceZombie", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, CoordenadaCruceZombie), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_CoordenadaCruceZombie_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_CoordenadaCruceZombie_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_ZombieMeshComponent_MetaData[] = {
 		{ "Category", "Zombie" },
@@ -274,6 +418,9 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_Energia = { "Energia", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, Energia), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_Energia_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_Energia_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AZombie_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Observadores_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Observadores,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_CoordenadaCruceZombie,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_ZombieMeshComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Energia,
@@ -305,7 +452,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AZombie, 3096554980);
+	IMPLEMENT_CLASS(AZombie, 875822022);
 	template<> ESTRATEGY_ATAQPVZL01_API UClass* StaticClass<AZombie>()
 	{
 		return AZombie::StaticClass();

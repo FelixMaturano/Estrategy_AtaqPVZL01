@@ -12,6 +12,7 @@ class UPrimitiveComponent;
 class AActor;
 struct FVector;
 struct FHitResult;
+class IPlantaObservador;
 #ifdef ESTRATEGY_ATAQPVZL01_Zombie_generated_h
 #error "Zombie.generated.h already included, missing '#pragma once' in Zombie.h"
 #endif
@@ -21,13 +22,19 @@ struct FHitResult;
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execOnHit); \
-	DECLARE_FUNCTION(execOnOverlapBeginFunction);
+	DECLARE_FUNCTION(execOnOverlapBeginFunction); \
+	DECLARE_FUNCTION(execDesuscribirPlanta); \
+	DECLARE_FUNCTION(execSuscribirPlanta); \
+	DECLARE_FUNCTION(execMoverZombie);
 
 
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execOnHit); \
-	DECLARE_FUNCTION(execOnOverlapBeginFunction);
+	DECLARE_FUNCTION(execOnOverlapBeginFunction); \
+	DECLARE_FUNCTION(execDesuscribirPlanta); \
+	DECLARE_FUNCTION(execSuscribirPlanta); \
+	DECLARE_FUNCTION(execMoverZombie);
 
 
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_INCLASS_NO_PURE_DECLS \
@@ -72,7 +79,11 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AZombie)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_PRIVATE_PROPERTY_OFFSET
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__Observadores() { return STRUCT_OFFSET(AZombie, Observadores); } \
+	FORCEINLINE static uint32 __PPO__CoordenadaCruceZombie() { return STRUCT_OFFSET(AZombie, CoordenadaCruceZombie); }
+
+
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_10_PROLOG
 #define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_13_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \

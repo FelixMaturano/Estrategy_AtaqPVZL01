@@ -5,6 +5,7 @@
 #include "Plant.h"
 #include "Projectile.h"
 #include <Kismet/GameplayStatics.h>
+
 // Sets default values
 AEstrategiaAtaqueDisparo::AEstrategiaAtaqueDisparo()
 {
@@ -31,7 +32,7 @@ void AEstrategiaAtaqueDisparo::atacarA(APlant* _plantaActual, FVector _ubicacion
 {
 
     UE_LOG(LogTemp, Warning, TEXT("Dispirando al Zombies"));
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Disparando al zombie"));
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Green, TEXT("Disparando al zombie"));
 
     APlant* planta;
     planta = _plantaActual;

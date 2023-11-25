@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Estrategy_AtaqPVZL01.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{40C67D31-0BDD-42C9-8AF8-B4DE99F1A9EE}</UniqueIdentifier>
+      <UniqueIdentifier>{F1A2AA8B-A903-4917-8ABA-8F21366C7274}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Estrategy_AtaqPVZL01.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{EB58FF1A-2C0F-45F8-828B-7538446CF679}</UniqueIdentifier>
+      <UniqueIdentifier>{D6BDA3D5-5569-40A4-AB4D-190B38A1867D}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -26,7 +26,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Estrategy_AtaqPVZL01">
-      <UniqueIdentifier>{993B25CF-2058-4229-9CAB-BAADE8E236DD}</UniqueIdentifier>
+      <UniqueIdentifier>{DA8D2B99-33F9-4F07-99D8-FAA7E76DD632}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.cpp">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
@@ -65,6 +65,12 @@
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Plant.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\PlantaObservador.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\PlantaObservador.h">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Projectile.cpp">

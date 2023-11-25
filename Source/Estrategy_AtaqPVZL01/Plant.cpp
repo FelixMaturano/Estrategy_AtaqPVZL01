@@ -6,9 +6,13 @@
 #include "Zombie.h"
 #include "EstrategiaAtaqueDisparo.h"
 #include "EstrategiaAtaqueAZombies.h"
+#include "EstrategiaAplastamientoAZ.h"
+
+#include "PlantaObservador.h"
 
 #include "Components/StaticMeshComponent.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -16,7 +20,6 @@ APlant::APlant()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PlantaMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cone.Shape_Cone'"));
 	MeshPlanta = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
@@ -29,61 +32,98 @@ APlant::APlant()
 	MeshPlanta->SetSimulatePhysics(false);
 	MeshPlanta->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
-
 	bCanFire = true;
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.2f;
-
 	//Energia = 200;
 	TiempoTranscurrido = 0.0f;
 	TiempoEntreDisparos = 1.0f;
 
 	DamageGenerates = 10.0f;
 	Health = 50.0f;
-	MovementSpeed = 0.1f;
+	MovementSpeed = 0.0001f;
 	bCanMove = false;
+}
+
+
+void APlant::NotificadoPorZombie(const FVector& PosicionZombie)
+{
+	// Lógica para cambiar la estrategia inmediatamente
+	CambiarEstrategia();
+
+	// Otras acciones que puedas necesitar realizar al ser notificado
+	auto Message = FString::Printf(TEXT("Zombie cerca en la posición: %s. Cambiando estrategia."), *PosicionZombie.ToString());
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, Message);
+	bool cambiado = true;
+}
+
+void APlant::notificarOtrasPlantas()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		UE_LOG(LogTemp, Error, TEXT("No se puede obtener el mundo"));
+		return;
+	}
+
+	TArray<AActor*> OtrasPlants;
+	UGameplayStatics::GetAllActorsOfClass(World, APlant::StaticClass(), OtrasPlants);
+
+	for (AActor* OtrasPlant : OtrasPlants)
+	{
+		APlant* Plant = Cast<APlant>(OtrasPlant);
+		if (Plant && Plant != this)
+		{
+			Plant->NotificadoPorZombie(LocalizacionObjetivo);
+		}
+	}
+}
+
+void APlant::setNotificarOtrasPlantas(AActor* _notificarOtrasPlantas)
+{
+	notificador = Cast<IPlantaObservador>(_notificarOtrasPlantas);
+}
+
+void APlant::CambiarEstrategia()
+{
+	if (EstrategiaAtaque)
+	{
+		// Si ya tenemos una estrategia, cambiamos a estrategia de aplastamiento
+		AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+		setEstrategiaAtaqueAZombies(NuevaEstrategia);
+
+		// Puedes agregar más lógica aquí según tus necesidades
+		// Por ejemplo, ajustar parámetros de la planta, cambiar animaciones, etc.
+	}
+	else
+	{
+		// Si no tenemos una estrategia, cambiamos a una estrategia de disparo
+		AEstrategiaAtaqueDisparo* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
+		setEstrategiaAtaqueAZombies(NuevaEstrategia);
+
+		// Puedes agregar más lógica aquí según tus necesidades
+		// Por ejemplo, ajustar parámetros de la planta, cambiar animaciones, etc.
+	}
 }
 
 // Called when the game starts or when spawned
 void APlant::BeginPlay()
 {
 	Super::BeginPlay();
+
 	AEstrategiaAtaqueDisparo* estrategiaAtaqueDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
 	setEstrategiaAtaqueAZombies(estrategiaAtaqueDisparo);
-
-
 }
 
 // Called every frame
 void APlant::Tick(float DeltaTime)
 {
+
 	Super::Tick(DeltaTime);
-	//if (Health <= 0)
-	//{
-	//	Destroy();
-	//}
-	//TiempoTranscurrido += DeltaTime;
-	//if (TiempoTranscurrido >= TiempoEntreDisparos) {
+	//timerhandle += DeltaTime;
 
-	//	FireShot(FVector(0.0f, 1.0f, 0.0f));
-	//	TiempoTranscurrido = 0.0f;
-	//}
+	atacar(LocalizacionObjetivo);
 
-
-	//if (HealthZ >0)
-	//{
-	//	 //MoveToTarget(FVector(-800.0f, -600.0f, 160.0f));
-//	if()
-	
-	 timerhandle += DeltaTime;
-
-	// if (timerhandle >= 2.0f) {
-		 atacar();
-	 //}
-	 //else if (timerhandle >= 4.0f) {
-		// MoveToTarget(FVector(-250.0f, 490.0f, 25.0f));
-	 //}
-	
 }
 
 float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -120,51 +160,46 @@ void APlant::MoveToTarget(FVector TargetLocation)
 	}
 }
 
-void APlant::setEstrategiaAtaqueAZombies(AActor* _estrategiaAtaqueAZombies)
-{
+//void APlant::setEstrategiaAtaqueAZombies(AActor* _estrategiaAtaqueAZombies)
+//{
+//
+//	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_estrategiaAtaqueAZombies);
+//
+//	//Log Error if the cast failed
+//	if (!EstrategiaAtaque)
+//	{
+//		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
+//		UE_LOG(LogTemp, Error, TEXT("Moverse(): The Actor is not a estrategia de movimiento!Are you sure that the Actor implements that interface ? "));
+//	}
+//
+//
+//}
 
-	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_estrategiaAtaqueAZombies);
-
-	//Log Error if the cast failed
-	if (!EstrategiaAtaque)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
-		UE_LOG(LogTemp, Error, TEXT("Moverse(): The Actor is not a estrategia de movimiento!Are you sure that the Actor implements that interface ? "));
-	}
-
-
-}
-
-void APlant::atacar()
-{
-	EstrategiaAtaque->atacarA(this, FVector(0.0f, 1.0f, 0.0f));
-
-}
 
 void APlant::ShotTimerExpired()
 {
 	bCanFire = true;
 }
 
+void APlant::setEstrategiaAtaqueAZombies(IEstrategiaAtaqueAZombies* _estrategiaAtaqueAZombies)
+{
+
+	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_estrategiaAtaqueAZombies);
+
+	// Log Error if the cast failed
+	if (!EstrategiaAtaque)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
+		UE_LOG(LogTemp, Error, TEXT("Moverse(): The Actor is not a estrategia de movimiento! Are you sure that the Actor implements that interface? "));
+	}
+
+}
+
+void APlant::atacar(const FVector& TargetLocation)
+{
+	EstrategiaAtaque->atacarA(this, FVector(0.0f,1.0f,0.0f));
+
+}
 
 
-
-
-//void APlant::NotifyActorBeginOverlap(AActor* OtherActor)
-//{
-//	AZombie* Zombie = Cast<AZombie>(OtherActor);
-//	if (Zombie)
-//	{
-//		if (NombrePlantas != "Hipnoseta")
-//		{
-//			Zombie->Destroy();
-//			this->Destroy();
-//		}
-//		else
-//		{
-//			Zombie->SetMovingX(10);
-//			this->Destroy();
-//		}
-//	}
-//}
 
