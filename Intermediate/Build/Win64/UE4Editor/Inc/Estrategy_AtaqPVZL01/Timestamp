@@ -1,8 +1,11 @@
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueDisparo.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01GameModeBase.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Plant.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\PlantaObservador.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Zombie.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\NotificarPlantas.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Projectile.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Publicador.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Suscriptor.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Transformar.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Zombie.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Plant.h

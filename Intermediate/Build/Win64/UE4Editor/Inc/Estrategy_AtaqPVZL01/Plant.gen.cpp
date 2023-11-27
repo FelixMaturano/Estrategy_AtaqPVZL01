@@ -19,7 +19,9 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 	UPackage* Z_Construct_UPackage__Script_Estrategy_AtaqPVZL01();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
-	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_UPlantaObservador_NoRegister();
+	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_ANotificarPlantas_NoRegister();
+	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_USuscriptor_NoRegister();
+	ESTRATEGY_ATAQPVZL01_API UClass* Z_Construct_UClass_UTransformar_NoRegister();
 // End Cross Module References
 	void APlant::StaticRegisterNativesAPlant()
 	{
@@ -46,6 +48,14 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireRate_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PlantActorReference_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PlantActorReference;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Notificador_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Notificador;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -85,13 +95,31 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_FireRate = { "FireRate", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, FireRate), METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_FireRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_FireRate_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlant_Statics::NewProp_PlantActorReference_MetaData[] = {
+		{ "Category", "Plant" },
+		{ "ModuleRelativePath", "Plant.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_PlantActorReference = { "PlantActorReference", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, PlantActorReference), Z_Construct_UClass_APlant_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_PlantActorReference_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_PlantActorReference_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlant_Statics::NewProp_Notificador_MetaData[] = {
+		{ "Comment", "//The Clock Tower of this Subscriber\n" },
+		{ "ModuleRelativePath", "Plant.h" },
+		{ "ToolTip", "The Clock Tower of this Subscriber" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlant_Statics::NewProp_Notificador = { "Notificador", nullptr, (EPropertyFlags)0x0040000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlant, Notificador), Z_Construct_UClass_ANotificarPlantas_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::NewProp_Notificador_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::NewProp_Notificador_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlant_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_MeshPlanta,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_GunOffset,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_FireRate,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_PlantActorReference,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlant_Statics::NewProp_Notificador,
 	};
 		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_APlant_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UPlantaObservador_NoRegister, (int32)VTABLE_OFFSET(APlant, IPlantaObservador), false },
+			{ Z_Construct_UClass_USuscriptor_NoRegister, (int32)VTABLE_OFFSET(APlant, ISuscriptor), false },
+			{ Z_Construct_UClass_UTransformar_NoRegister, (int32)VTABLE_OFFSET(APlant, ITransformar), false },
 		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlant_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlant>::IsAbstract,
@@ -120,7 +148,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlant, 575155280);
+	IMPLEMENT_CLASS(APlant, 4088434706);
 	template<> ESTRATEGY_ATAQPVZL01_API UClass* StaticClass<APlant>()
 	{
 		return APlant::StaticClass();

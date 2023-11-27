@@ -1,15 +1,32 @@
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Zombie.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Zombie.generated.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Plant.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.generated.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\PlantaObservador.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Suscriptor.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Suscriptor.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\PlantaObservador.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Zombie.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Plant.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.generated.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\NotificarPlantas.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Publicador.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Publicador.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\NotificarPlantas.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Transformar.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Transformar.generated.h
 C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Plant.generated.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Projectile.h
+C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Projectile.generated.h

@@ -1,45 +1,33 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Suscriptor.h"
+#include "Components/BoxComponent.h"
 #include "Zombie.generated.h"
 
 class UStaticMeshComponent;
+class APlant;
 UCLASS()
-class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor
+class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor, public ISuscriptor
 {
 	GENERATED_BODY()
 	
 public:	
 	AZombie();
+	//-----------------------------------------------observer=======================================
 
-public:
-	// metodo de notificacion******************************************************
-	UFUNCTION(BlueprintCallable, Category = "Gameplay")
-	void MoverZombie();
-
-	UFUNCTION(BlueprintCallable, Category = "Gameplay")
-	void SuscribirPlanta(TScriptInterface<IPlantaObservador> Observador);
-
-	UFUNCTION(BlueprintCallable, Category = "Gameplay")
-	void DesuscribirPlanta(TScriptInterface<IPlantaObservador> Observador);
 private:
-	UPROPERTY()
-	TArray<TScriptInterface<IPlantaObservador>> Observadores;
 
-	UPROPERTY(EditAnywhere, Category = "Gameplay")
-	float CoordenadaCruceZombie;
-	//--------------------------------------------------------------------------
+	//Los suscrioptores y lo inicializamos
+	UPROPERTY()
+	TArray<AActor*> Subscribers = TArray<AActor*>();
+	//-----------------------------------------------observer=======================================
 public:
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* ZombieMeshComponent;
 
-	UFUNCTION()
-	void OnOverlapBeginFunction(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 
 protected:
@@ -83,11 +71,24 @@ public:
 
 	FVector StartLocation;
 	FVector EndLocation;
-
-	void iniciarMovimiento();
-
-
-	bool bHaNotificado=false;
 private:
 	FVector CurrentLocation;
+// ======observer===============================
+
+private:
+	APlant* planta;
+
+
+	virtual void Destroyed() override;
+
+
+	virtual void NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal,
+		FVector NormalImpulse, const FHitResult& Hit)override;//esta funcion nos notifica cada golpe que de la clase.
+
+
+	UFUNCTION(BlueprintCallable, Category = "Custom")
+	bool IsActorDestroyed() const;
+public:
+	// Implementación de la función notificarPocisionZombie de ISuscriptor
+	virtual void notificarPocisionZombie(class APublicador* Publicador) override;
 };

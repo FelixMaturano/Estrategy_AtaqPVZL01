@@ -7,7 +7,6 @@
 
 #include"EstrategiaAtaqueDisparo.h"
 #include "EstrategiaAplastamientoAZ.h"
-#include "PlantaObservador.h"
 
 #include "Kismet/GameplayStatics.h"
 
@@ -22,7 +21,7 @@ AEstrategy_AtaqPVZL01GameModeBase::AEstrategy_AtaqPVZL01GameModeBase()
 void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
-	EstrategiaAplastamientoAZe = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+	EstrategiaAplastamientoAZ = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
 
 
 	//Definiendo la posición de los zombies
@@ -31,7 +30,7 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 	//Genera 5 zombies
 	for (int i = 0; i < 2; i++) {
 		//	 Define una posición temporal para el zombie en X
-		SpawnLocationZombie.X += 200;
+		SpawnLocationZombie.X += 100;
 		//Aparicion de los zombies
 
 
@@ -43,7 +42,6 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 		NuevoZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
 		NuevoZombie->SetCanMove(true);     // Habilita las colisiones si es necesario
 		//NumberZombiesSpawned += 1;
-
 
 		Zombies.Add(NuevoZombie);
 
@@ -58,40 +56,35 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 		SpawnLocationPlant.X += 200;
 		//Aparicion de los zombies
 
-
+		//APlant* plantatia;
 		NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlant, FRotator::ZeroRotator);
 		NuevaPlanta->SetActorEnableCollision(true);
 
-		Plantas.Add(NuevaPlanta);
+		NuevaPlanta->Plantas.Add(NuevaPlanta);
 
 	}
-
-
 }
 
 
 void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//timerhandle += DeltaTime;
 
-	Super::Tick(DeltaTime);
+	//if (timerhandle >= 10.0f)
+	//{
+	//	for (int32 i = 0; i < Plantas.Num(); i++)
+	//	{
+	//		APlant* plantas = Cast<APlant>(Plantas[i]);
+	//		if (plantas)
+	//		{
+	//			plantas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZe);
+	//		}
+	//	}
 
-	timerhandle += DeltaTime;
-
-	if (timerhandle >= 10.0f)
-	{
-		for (int32 i = 0; i < Plantas.Num(); i++)
-		{
-			APlant* plantas = Cast<APlant>(Plantas[i]);
-			if (plantas)
-			{
-				plantas->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZe);
-			}
-		}
-
-		// Reinicia el temporizador
-		timerhandle = 0.0f;
-	}
+	//	// Reinicia el temporizador
+	//	timerhandle = 0.0f;
+	//}
 
 }
 APlant* AEstrategy_AtaqPVZL01GameModeBase::SpawnPlantas(FVector _spawnPosition)
@@ -107,17 +100,8 @@ AZombie* AEstrategy_AtaqPVZL01GameModeBase::SpawnZombies(FVector _spawnPosition)
 	FTransform SpawnLocation;
 	SpawnLocation.SetLocation(_spawnPosition);
 	return GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocation);
-
 }
 
 
-void AEstrategy_AtaqPVZL01GameModeBase::NotifyPlants()
-{
-}
-
-void AEstrategy_AtaqPVZL01GameModeBase::ChangeStrategyOnNotification()
-{
-
-}
 
 

@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Estrategy_AtaqPVZL01.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{F1A2AA8B-A903-4917-8ABA-8F21366C7274}</UniqueIdentifier>
+      <UniqueIdentifier>{5A333247-A72C-4EE7-A98F-E435898F8DE4}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Estrategy_AtaqPVZL01.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{D6BDA3D5-5569-40A4-AB4D-190B38A1867D}</UniqueIdentifier>
+      <UniqueIdentifier>{2FF82DB6-B322-4C09-AC1B-AF6E340DFDA3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -26,7 +26,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Estrategy_AtaqPVZL01">
-      <UniqueIdentifier>{DA8D2B99-33F9-4F07-99D8-FAA7E76DD632}</UniqueIdentifier>
+      <UniqueIdentifier>{C060C309-C37D-4089-89D9-AF579C433B5E}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\EstrategiaAplastamientoAZ.cpp">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
@@ -61,22 +61,40 @@
     <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01GameModeBase.h">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\NotificarPlantas.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\NotificarPlantas.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Plant.cpp">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Plant.h">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\PlantaObservador.cpp">
-      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\PlantaObservador.h">
-      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Projectile.cpp">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Projectile.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Publicador.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Publicador.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Suscriptor.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Suscriptor.h">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Transformar.cpp">
+      <Filter>Source\Estrategy_AtaqPVZL01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Estrategy_AtaqPVZL01\Transformar.h">
       <Filter>Source\Estrategy_AtaqPVZL01</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Estrategy_AtaqPVZL01\Zombie.cpp">

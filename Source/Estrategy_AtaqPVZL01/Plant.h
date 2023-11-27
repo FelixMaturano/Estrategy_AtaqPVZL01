@@ -1,31 +1,31 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "EstrategiaAtaqueAZombies.h"
-#include "PlantaObservador.h"
-#include"EstrategiaAplastamientoAZ.h"
-#include "Components/BoxComponent.h"
+#include "EstrategiaAplastamientoAZ.h"
+#include "Suscriptor.h"
+#include "NotificarPlantas.h"
+#include "Transformar.h"
 #include "Plant.generated.h"
 
 
+class AEstrategiaAplastamientoAZ;
+class ANotificarPlantas;
+
 UCLASS()
-class ESTRATEGY_ATAQPVZL01_API APlant : public AActor, public IPlantaObservador
+class ESTRATEGY_ATAQPVZL01_API APlant : public AActor, public ISuscriptor, public ITransformar
 {
 	GENERATED_BODY()
 
 public:
-	
-	APlant();	
-
+	APlant();
+public:
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* MeshPlanta;
 
 	IEstrategiaAtaqueAZombies* EstrategiaAtaque;
-	//IEstrategiaAtaqueDisparo* EstrategiaAtaqueDisparo;
-	//IEstrategiaAtaqueAplastamiento* EstrategiaAtaqueAplastamiento;
 
 	float AlturaSalto = 8.0f;
 	float DistanciaInicial;
@@ -33,15 +33,6 @@ public:
 	FVector LocalizacionObjetivo;
 	FVector Direccion;
 	float DistanciaAlObjetivo;
-
-	// nuesta funcion de notificacion******************************************************
-	IPlantaObservador* notificador;
-	virtual void NotificadoPorZombie(const FVector& PosicionZombie) override;
-	void notificarOtrasPlantas();
-	void setNotificarOtrasPlantas(AActor* _notificarOtrasPlantas);
-	
-
-	void CambiarEstrategia();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -101,7 +92,28 @@ public:
 	// Manejador para una gestión eficiente del temporizador ShotTimerExpired 
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
-	bool bHaSidoNotificada = false;
-	APlant* esto;
+	TArray<  APlant* > Plantas;
 
+
+	UPROPERTY(EditAnywhere)
+	APlant* PlantActorReference; // Referencia al actor que contiene el array Plantas
+
+	class AZombie* Zombie;
+	
+private:
+	//The Clock Tower of this Subscriber
+	UPROPERTY()
+	class ANotificarPlantas* Notificador;
+
+	virtual void Destroyed() override;
+
+public:
+	//Called when the Plublisher changed its state, it will execute this Subscriber routine
+	virtual void notificarPocisionZombie(class APublicador* Publicador) override;
+	//Execute this Subscriber routine
+	virtual void Cambios();
+	//Set the Clock Tower of this Subscriber
+	void DefinirNotificarPlantas(ANotificarPlantas* myNotificarPlantas);
+	//----------------------------------------------------------------------------
+	FString EstrategiaPlanta;
 };

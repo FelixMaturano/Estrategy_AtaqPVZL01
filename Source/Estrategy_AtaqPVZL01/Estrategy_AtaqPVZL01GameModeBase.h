@@ -4,13 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "PlantaObservador.h"
 #include "Estrategy_AtaqPVZL01GameModeBase.generated.h"
 
 /**
  * 
  */
-class IPlantaObservador;
 class AEstrategiaAplastamientoAZ;
 class APlant;
 UCLASS()
@@ -24,7 +22,7 @@ public:
 	float timerhandle;
 
 
-	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZe;
+	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZ;
 
 
 public:
@@ -34,7 +32,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	TArray< class APlant* > Plantas;
 	APlant* NuevaPlanta;
 
 	float TiempoTranscurrido;
@@ -45,22 +42,6 @@ public:
 	class APlant* SpawnPlantas(FVector _spawnPosition);
 	class AZombie* SpawnZombies(FVector _spawnPosition);
 
-	float ElapsedTime;
+	//float ElapsedTime;
 
-	// Función para notificar a todas las plantas como observadoras
-	void NotifyPlants();
-
-	// Declaración de observadores
-	TArray<IPlantaObservador*> PlantObservers;
-
-	// Función para suscribir observadores
-	void SubscribeToPlantEvents(IPlantaObservador* Observer)
-	{
-		if (Observer)
-		{
-			PlantObservers.AddUnique(Observer);
-		}
-	}
-	// Función para cambiar la estrategia cuando se recibe una notificación
-	void ChangeStrategyOnNotification();
 };
