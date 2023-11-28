@@ -20,7 +20,7 @@ AZombie::AZombie()
 	ZombieMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
 	ZombieMeshComponent->SetStaticMesh(ZombieMesh.Object);
 	//ZombieMeshComponent->SetRelativeScale3D(FVector(0.15f, 0.15f, 0.35f));
-	ZombieMeshComponent->SetRelativeScale3D(FVector(0.35f, 0.35f, 0.55f));
+	ZombieMeshComponent->SetRelativeScale3D(FVector(0.25f, 0.25f, 0.45f));
 
 	RootComponent = ZombieMeshComponent;
 
@@ -50,12 +50,7 @@ void AZombie::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AEstrategy_AtaqPVZL01GameModeBase* GameMode = Cast<AEstrategy_AtaqPVZL01GameModeBase>(UGameplayStatics::GetGameMode(this));
-	if (GameMode)
-	{
-		plantasSuscriptores = GameMode->GetPlantArray();
-		// Ahora puedes manipular PlantArray
-	}
+
 }
 
 // Called every frame
@@ -77,6 +72,16 @@ void AZombie::Tick(float DeltaTime)
 	{
 		this->AddActorWorldOffset(Direccion * DeltaMove);
 	}
+
+	//notifPocisionASuscriptores();
+
+	AEstrategy_AtaqPVZL01GameModeBase* GameMode = Cast<AEstrategy_AtaqPVZL01GameModeBase>(UGameplayStatics::GetGameMode(this));
+	if (GameMode)
+	{
+		plantasSuscriptores = GameMode->GetPlantArray();
+		// Ahora puedes manipular PlantArray
+	}
+
 
 	notifPocisionASuscriptores();
 }
@@ -125,7 +130,6 @@ void AZombie::Destroyed()
 
 void AZombie::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
-
 	AProjectile* proyectil = Cast<AProjectile>(Other);
 
 	if (Other != proyectil) {
@@ -134,7 +138,6 @@ void AZombie::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveCo
 		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Nombre del otro actor: %s"), *Other->GetName()));
 
 	}
-
 }
 
 bool AZombie::IsActorDestroyed() const
@@ -142,18 +145,67 @@ bool AZombie::IsActorDestroyed() const
 	return IsPendingKill();
 }
 
+void AZombie::Suscribirse(APlant* _Suscriptor)
+{
+	plantasSuscriptores.Add(_Suscriptor);
+}
+
+void AZombie::Desuscribirse(APlant* _SuscriptorAQuitar)
+{
+	plantasSuscriptores.Remove(_SuscriptorAQuitar);
+}
+
 void AZombie::notifPocisionASuscriptores() {
-	{
-		PosicionActualZombie = GetActorLocation();
-		if (PosicionActualZombie.Y < 0.0f) {
 
+	//PosicionActualZombie = GetActorLocation();
 
-			for (int32 i = 0; i < plantasSuscriptores.Num(); i++)
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Planta notificada"));
-				GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
-				plantasSuscriptores[i]->_HsidoNotificado = true;
-			}
+	//if (PosicionActualZombie.Y < 400) {
+	//	GEngine->AddOnScreenDebugMessage(-1, 0.50f, FColor::Red, TEXT("Que disparen las plantas"));// , false, FVector2D(2.f, 3.f));
+	//		//GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+	//}if (PosicionActualZombie.Y < -160.0f) {
+
+	//	GEngine->AddOnScreenDebugMessage(-1, 0.4f, FColor::Yellow, TEXT("Enta en Accion Apisonaflor"));// , false, FVector2D(3.f, 2.f));
+	//		//GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+	//}
+	//// Bucle para cada suscriptor (en este caso, plantas suscriptoras)
+	//for (APlant* Planta : plantasSuscriptores)
+	//{
+	//	// Asegúrate de que la planta es un suscriptor válido
+	//	ISuscriptor* Sus = Cast<ISuscriptor>(Planta);
+
+	//	if (Sus)
+	//	{
+	//		// Notifica a cada planta que algo ha cambiado, para que puedan ejecutar su propia rutina
+	//		Sus->notificarPocision(this);
+	//	}
+	//}
+
+	PosicionActualZombie = GetActorLocation();
+	if (PosicionActualZombie.Y < 380.0f) {
+
+		for (int32 i = 0; i < plantasSuscriptores.Num(); i++)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, TEXT("Que disparen las plantas"));//, false, FVector2D(2.f, 3.f));
+			//GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+			plantasSuscriptores[i]->_HsidoNotificado = true;
+		}
+	}if (PosicionActualZombie.Y <= -160.0f) {
+
+		for (int32 i = 0; i < plantasSuscriptores.Num(); i++)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, TEXT("Enta en Accion Apisonaflor"), false, FVector2D(3.f, 2.f));
+			//GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+			plantasSuscriptores[i]->_HsidoNotificado2 = true;
+
+		}
+	}if (PosicionActualZombie.Y < 100.0f) {
+
+		for (int32 i = 0; i < plantasSuscriptores.Num(); i++)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, TEXT("Disparo otra vez "), false, FVector2D(3.f, 2.f));
+			//GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+			plantasSuscriptores[i]->_HsidoNotificado3 = true;
+
 		}
 	}
 }

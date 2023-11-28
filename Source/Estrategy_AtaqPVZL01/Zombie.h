@@ -52,9 +52,6 @@ public:
 
 	FString TagString;
 
-	
-
-
 	float DamageGenerates = 10.f;
 	float Health = 10.0f;
 
@@ -79,12 +76,16 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Custom")
 	bool IsActorDestroyed() const;
 public:
+
+	//Add the pased Subscriber to the list
+	virtual void Suscribirse(APlant* Suscriptor);
+
+	//Remove the passed Subscriber from the list
+	virtual void Desuscribirse(APlant* SuscriptorAQuitar);
 	// Implementación de la función notificarPocisionZombie de ISuscriptor
 	virtual void notifPocisionASuscriptores();
 
 	APlant* Suscriptores;
 
 	FVector PosicionActualZombie;
-
-
 };

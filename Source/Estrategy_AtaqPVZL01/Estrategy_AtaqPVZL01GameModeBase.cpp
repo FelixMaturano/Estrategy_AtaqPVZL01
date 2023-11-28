@@ -1,6 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-
 #include "Estrategy_AtaqPVZL01GameModeBase.h"
 #include "Plant.h"
 #include "Zombie.h"
@@ -27,13 +26,13 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 	FVector SpawnLocationZombie = FVector(-250.0f, 490.0f, 25.0f);
 
 	//Genera 5 zombies
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 3; i++) {
 		//	 Define una posición temporal para el zombie en X
-		SpawnLocationZombie.X += 300;
+		SpawnLocationZombie.X += 200;
 		//Aparicion de los zombies
 		NuevoZombie = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
 
-		NuevoZombie->Velocidad = FMath::FRandRange(0.053f, 0.06f);
+		NuevoZombie->Velocidad = FMath::FRandRange(0.010f, 0.012f);
 
 		NuevoZombie->SetActorHiddenInGame(false);      // Haz que el actor sea visible
 		NuevoZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
@@ -44,13 +43,12 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 
 	}
 
-
 	FVector SpawnLocationPlant = FVector(-250.0f, -440.0f, 25.0f);
 
 	//Genera 5 zombies
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 3; i++) {
 		//	 Define una posición temporal para el zombie en X
-		SpawnLocationPlant.X += 300;
+		SpawnLocationPlant.X += 200;
 		//Aparicion de los zombies
 
 		//APlant* plantatia;
@@ -66,26 +64,6 @@ void AEstrategy_AtaqPVZL01GameModeBase::BeginPlay()
 void AEstrategy_AtaqPVZL01GameModeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//////timerhandle+=DeltaTime;
-	PosicionActualZombie = NuevoZombie->GetActorLocation();
-	if (PosicionActualZombie.Y < 0.0f) {
-		for (int32 i = 0; i < PlantArray.Num(); i++)
-		{
-			
-			//	APlant* planta = Cast<APlant>(PlantArray[i]);
-				//if (planta)
-			//{
-		//	NuevoZombie->notificarPocisionZombie(PlantArray);
-					//planta->setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
-					//// Crear una nueva instancia de AEstrategiaAplastamientoAZ
-///////////////AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
-			//planta->setEstrategiaAtaqueAZombies(NuevaEstrategia);
-		//}
-			PlantArray[i]->_HsidoNotificado = true;
-
-		}
-
-	}
 
 }
 APlant* AEstrategy_AtaqPVZL01GameModeBase::SpawnPlantas(FVector _spawnPosition)

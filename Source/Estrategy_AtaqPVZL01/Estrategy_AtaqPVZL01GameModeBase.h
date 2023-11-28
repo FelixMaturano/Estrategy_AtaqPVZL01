@@ -22,9 +22,7 @@ public:
 
 	float timerhandle;
 
-
 	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZ;
-
 
 public:
 	// Called every frame
@@ -33,24 +31,16 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-
-	TArray<  APlant* > PlantArray;
-	APlant* NuevaPlanta;
-
-
 	float TiempoTranscurrido;
 	TArray< AZombie*> Zombies;
 	AZombie* NuevoZombie;
-	
-	
 
 	class APlant* SpawnPlantas(FVector _spawnPosition);
 	class AZombie* SpawnZombies(FVector _spawnPosition);
 
-	FVector PosicionActualZombie;
-
-	//float ElapsedTime;
-public:
+	//FVector PosicionActualZombie;
+	TArray<  APlant* > PlantArray;
+	APlant* NuevaPlanta;
 	TArray<APlant*>& GetPlantArray() { return PlantArray; }
 
 };

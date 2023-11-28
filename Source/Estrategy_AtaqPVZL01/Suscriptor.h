@@ -23,5 +23,5 @@ class ESTRATEGY_ATAQPVZL01_API ISuscriptor
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
-	virtual void notificarPocisionZombie(class APublicador* Publicador) = 0;
+	virtual void notificarPocision(class AZombie* _Publicador) = 0;
 };

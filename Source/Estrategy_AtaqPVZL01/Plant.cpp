@@ -45,7 +45,6 @@ APlant::APlant()
 	MovementSpeed = 0.0001f;
 	bCanMove = false;
 
-	EstrategiaPlanta = "atacar";
 }
 
 // Called when the game starts or when spawned
@@ -65,14 +64,7 @@ void APlant::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	timerhandle += DeltaTime;
 
-	atacar(LocalizacionObjetivo);
-
-	if (_HsidoNotificado==true)
-	{
-		AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
-		setEstrategiaAtaqueAZombies(NuevaEstrategia);
-		_HsidoNotificado = false;  // Reinicia la bandera después de cambiar la estrategia
-	}
+	Transformar();
 	
 }
 
@@ -87,6 +79,8 @@ float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AControl
 	// Devuelve la cantidad de da?o que se aplic? realmente.
 	return Health;
 }
+
+
 void APlant::MoveToTarget(FVector TargetLocation)
 {
 	FVector Direction = TargetLocation - FVector(-250.0f, 490.0f, 25.0f);
@@ -122,25 +116,43 @@ void APlant::setEstrategiaAtaqueAZombies(IEstrategiaAtaqueAZombies* _estrategiaA
 void APlant::atacar(const FVector& TargetLocation)
 {
 	EstrategiaAtaque->atacarA(this, FVector(0.0f,1.0f,0.0f));
-	
-
 }
-
-
 //void APlant::Destroyed()
 //{
 //	//Notificador->Desuscribirse(this);
 //}
-void APlant::notificarPocisionZombie(APublicador* Publicador)
+
+void APlant::notificarPocision(AZombie* _Publicador)
 {
-	//Cambios();
+	Transformar();
 }
 
-void APlant::Cambios()
+void APlant::Transformar()
 {
-	
-}
-
-void APlant::DefinirNotificarPlantas(ANotificarPlantas* myNotificarPlantas)
-{
+	//AZombie *zombieNoticia = nullptr;
+	if (_HsidoNotificado == true)
+	{
+		atacar(LocalizacionObjetivo);
+		//    AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+  //          setEstrategiaAtaqueAZombies(NuevaEstrategia);
+		////atacar(LocalizacionObjetivo);
+		////setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
+		_HsidoNotificado = false;
+	}if (_HsidoNotificado2 == true)
+	{
+		//atacar(LocalizacionObjetivo);
+		   AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+           setEstrategiaAtaqueAZombies(NuevaEstrategia);
+		////atacar(LocalizacionObjetivo);
+		////setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
+		   _HsidoNotificado2 = false;
+	}if (_HsidoNotificado3 == true)
+	{
+		atacar(LocalizacionObjetivo);
+		//AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+		//setEstrategiaAtaqueAZombies(NuevaEstrategia);
+		////atacar(LocalizacionObjetivo);
+		////setEstrategiaAtaqueAZombies(EstrategiaAplastamientoAZ);
+		_HsidoNotificado2 = false;
+	}
 }

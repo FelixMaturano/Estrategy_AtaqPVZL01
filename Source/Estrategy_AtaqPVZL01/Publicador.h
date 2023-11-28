@@ -36,4 +36,6 @@ public:
 
 	//Notify all the Subscribers that something has changed
 	virtual void NotificarSuscriptores();
+
+
 };

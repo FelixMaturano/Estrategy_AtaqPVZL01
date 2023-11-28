@@ -35,10 +35,9 @@ public:
 	FVector Direccion;
 	float DistanciaAlObjetivo;
 protected:
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-
 
 public:
 	// Called every frame
@@ -93,9 +92,6 @@ public:
 	// Manejador para una gestión eficiente del temporizador ShotTimerExpired 
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
-	
-
-
 	UPROPERTY(EditAnywhere)
 	APlant* PlantActorReference; // Referencia al actor que contiene el array Plantas
 
@@ -110,18 +106,20 @@ private:
 
 public:
 	//Called when the Plublisher changed its state, it will execute this Subscriber routine
-	virtual void notificarPocisionZombie(class APublicador* Publicador) override;
+	virtual void notificarPocision(class AZombie* _Publicador)override;
 	//Execute this Subscriber routine
-	virtual void Cambios()override;
+	virtual void Transformar()override;
 	//Set the Clock Tower of this Subscriber
-	void DefinirNotificarPlantas(ANotificarPlantas* myNotificarPlantas);
 	//----------------------------------------------------------------------------
 	FString EstrategiaPlanta;
 
 	// Nueva variable para indicar si la planta ha sido notificada
-	bool _HsidoNotificado = false;
+
 
 	FVector PosicionActualZombie;
 
+	bool _HsidoNotificado = false;
+	bool _HsidoNotificado2 = false;
+	bool _HsidoNotificado3 = false;
 
 };

@@ -30,18 +30,18 @@ void AEstrategiaAplastamientoAZ::Tick(float DeltaTime)
 
 void AEstrategiaAplastamientoAZ::atacarA(APlant* _plantaActual, FVector _ubicacionObjetivo)
 {
-    UE_LOG(LogTemp, Warning, TEXT("LA SEGUNDA ESTRATEGIA:  Salto para aplastar "));
-    GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow, TEXT("Aplastando al Zombie"));
+   // UE_LOG(LogTemp, Warning, TEXT("LA SEGUNDA ESTRATEGIA:  Salto para aplastar "));
+    //GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow, TEXT("Aplastando al Zombie"));
 
     APlant* Plant = _plantaActual;
-    Plant->MovementSpeed = 400.0f;
+    Plant->MovementSpeed = 600.0f;
 
     // Obtener todos los zombies en el mundo
     TArray<AActor*> Zombies;
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), AZombie::StaticClass(), Zombies);
 
     // Encontrar el zombie más cercano
-    AActor* ClosestZombie = nullptr;
+   AActor* ClosestZombie = nullptr;
     float ClosestDistance = TNumericLimits<float>::Max();
 
     for (AActor* Zombie : Zombies)
@@ -63,7 +63,7 @@ void AEstrategiaAplastamientoAZ::atacarA(APlant* _plantaActual, FVector _ubicaci
         Plant->DistanciaAlObjetivo = FVector::Dist(Plant->LocalizacionObjetivo, Plant->GetActorLocation());
 
         // Salta hacia el objetivo
-        Plant->AlturaSalto = FMath::Max(Plant->AlturaSalto, Plant->AlturaSalto + 2.0f);
+        Plant->AlturaSalto = FMath::Max(Plant->AlturaSalto, Plant->AlturaSalto + 3.0f);
 
         float DeltaMove = Plant->MovementSpeed * GetWorld()->DeltaTimeSeconds;
 
