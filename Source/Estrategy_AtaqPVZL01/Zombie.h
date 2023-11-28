@@ -4,31 +4,32 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Suscriptor.h"
+#include"Plant.h"
+#include "Publicador.h"
 #include "Components/BoxComponent.h"
 #include "Zombie.generated.h"
 
 class UStaticMeshComponent;
 class APlant;
+class AEstrategiaAplastamientoAZ;
+class APublicador;
 UCLASS()
-class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor, public ISuscriptor
+class ESTRATEGY_ATAQPVZL01_API AZombie : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	AZombie();
-	//-----------------------------------------------observer=======================================
 
 private:
-
-	//Los suscrioptores y lo inicializamos
-	UPROPERTY()
-	TArray<AActor*> Subscribers = TArray<AActor*>();
-	//-----------------------------------------------observer=======================================
+    UPROPERTY(EditAnywhere)
+	TArray<APlant*> plantasSuscriptores;
+	
 public:
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* ZombieMeshComponent;
 
-
+	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZ;
 
 protected:
 	// Called when the game starts or when spawned
@@ -51,6 +52,8 @@ public:
 
 	FString TagString;
 
+	
+
 
 	float DamageGenerates = 10.f;
 	float Health = 10.0f;
@@ -67,28 +70,21 @@ public:
 	FORCEINLINE float GetSpawnAfter() { return SpawnAfter; }
 	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }
 
-	float MovingX = 300.0f;
-
-	FVector StartLocation;
-	FVector EndLocation;
 private:
-	FVector CurrentLocation;
-// ======observer===============================
-
-private:
-	APlant* planta;
-
-
 	virtual void Destroyed() override;
 
-
 	virtual void NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal,
-		FVector NormalImpulse, const FHitResult& Hit)override;//esta funcion nos notifica cada golpe que de la clase.
-
+	FVector NormalImpulse, const FHitResult& Hit)override;//esta funcion nos notifica cada golpe que de la clase.
 
 	UFUNCTION(BlueprintCallable, Category = "Custom")
 	bool IsActorDestroyed() const;
 public:
 	// Implementación de la función notificarPocisionZombie de ISuscriptor
-	virtual void notificarPocisionZombie(class APublicador* Publicador) override;
+	virtual void notifPocisionASuscriptores();
+
+	APlant* Suscriptores;
+
+	FVector PosicionActualZombie;
+
+
 };

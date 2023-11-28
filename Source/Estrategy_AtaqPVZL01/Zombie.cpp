@@ -4,6 +4,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "Estrategy_AtaqPVZL01GameModeBase.h"
+#include "Engine/World.h"
 #include "Plant.h"
 
 #include "Projectile.h"
@@ -48,6 +50,12 @@ void AZombie::BeginPlay()
 {
 	Super::BeginPlay();
 
+	AEstrategy_AtaqPVZL01GameModeBase* GameMode = Cast<AEstrategy_AtaqPVZL01GameModeBase>(UGameplayStatics::GetGameMode(this));
+	if (GameMode)
+	{
+		plantasSuscriptores = GameMode->GetPlantArray();
+		// Ahora puedes manipular PlantArray
+	}
 }
 
 // Called every frame
@@ -70,7 +78,7 @@ void AZombie::Tick(float DeltaTime)
 		this->AddActorWorldOffset(Direccion * DeltaMove);
 	}
 
-	CurrentLocation = GetActorLocation();
+	notifPocisionASuscriptores();
 }
 
 void AZombie::morir()
@@ -108,6 +116,7 @@ void AZombie::MoveToTarget(FVector TargetLocation)
 		// Mueve el objeto en la dirección calculada
 		AddActorWorldOffset(Direction.GetSafeNormal() * DeltaMove);
 	}
+
 }
 void AZombie::Destroyed()
 {
@@ -117,7 +126,6 @@ void AZombie::Destroyed()
 void AZombie::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
 
-	//Destroy();
 	AProjectile* proyectil = Cast<AProjectile>(Other);
 
 	if (Other != proyectil) {
@@ -126,9 +134,7 @@ void AZombie::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveCo
 		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Nombre del otro actor: %s"), *Other->GetName()));
 
 	}
-	//Destroy();
-	/*GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Este es un mensaje")));
-	Other->Destroy();*/
+
 }
 
 bool AZombie::IsActorDestroyed() const
@@ -136,22 +142,18 @@ bool AZombie::IsActorDestroyed() const
 	return IsPendingKill();
 }
 
-void AZombie::notificarPocisionZombie(APublicador* Publicador)
-{
-	// Obtener la posición actual del zombie y notificar a las plantas
-	FVector PosicionZombie = GetActorLocation();
-	if (PosicionZombie.Y == 0)
+void AZombie::notifPocisionASuscriptores() {
 	{
-		// Obtener el publicador específico (en este caso ANotificarPlantas)
-		ANotificarPlantas* NotificadorPlantas = Cast<ANotificarPlantas>(Publicador);
-		if (NotificadorPlantas)
-		{
-			// Notificar a las plantas sobre la posición del zombie
-			NotificadorPlantas->establecerPocisionZombie(FString::Printf(TEXT("Zombie en Y=0: %s"), *GetName()));
+		PosicionActualZombie = GetActorLocation();
+		if (PosicionActualZombie.Y < 0.0f) {
+
+
+			for (int32 i = 0; i < plantasSuscriptores.Num(); i++)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Planta notificada"));
+				GEngine->AddOnScreenDebugMessage(-2, 5.f, FColor::Red, TEXT("Planta ha sido notificada"), false, FVector2D(7.f, 7.f));
+				plantasSuscriptores[i]->_HsidoNotificado = true;
+			}
 		}
 	}
 }
-
-
-
-

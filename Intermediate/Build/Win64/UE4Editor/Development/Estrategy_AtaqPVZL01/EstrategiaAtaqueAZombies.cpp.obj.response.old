@@ -262,8 +262,11 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
+/FI"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\Estrategy_AtaqPVZL01Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\Estrategy_AtaqPVZL01Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\Estrategy_AtaqPVZL01Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
 "C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.cpp"
-/FI"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.h"
+/FI"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h"
 /Fo"C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\EstrategiaAtaqueAZombies.cpp.obj"
 /TP
 /GR-

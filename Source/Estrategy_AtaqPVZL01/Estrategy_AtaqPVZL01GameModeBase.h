@@ -11,6 +11,7 @@
  */
 class AEstrategiaAplastamientoAZ;
 class APlant;
+class AZombie;
 UCLASS()
 class ESTRATEGY_ATAQPVZL01_API AEstrategy_AtaqPVZL01GameModeBase : public AGameModeBase
 {
@@ -32,16 +33,24 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	TArray<  APlant* > PlantArray;
 	APlant* NuevaPlanta;
 
+
 	float TiempoTranscurrido;
-	TArray<class AZombie*> Zombies;
+	TArray< AZombie*> Zombies;
 	AZombie* NuevoZombie;
+	
 	
 
 	class APlant* SpawnPlantas(FVector _spawnPosition);
 	class AZombie* SpawnZombies(FVector _spawnPosition);
 
+	FVector PosicionActualZombie;
+
 	//float ElapsedTime;
+public:
+	TArray<APlant*>& GetPlantArray() { return PlantArray; }
 
 };

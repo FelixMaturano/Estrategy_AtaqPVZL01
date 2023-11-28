@@ -6,6 +6,7 @@
 #include "EstrategiaAtaqueAZombies.h"
 #include "EstrategiaAplastamientoAZ.h"
 #include "Suscriptor.h"
+#include "Publicador.h"
 #include "NotificarPlantas.h"
 #include "Transformar.h"
 #include "Plant.generated.h"
@@ -13,7 +14,7 @@
 
 class AEstrategiaAplastamientoAZ;
 class ANotificarPlantas;
-
+class Publicador;
 UCLASS()
 class ESTRATEGY_ATAQPVZL01_API APlant : public AActor, public ISuscriptor, public ITransformar
 {
@@ -26,7 +27,7 @@ public:
 	class UStaticMeshComponent* MeshPlanta;
 
 	IEstrategiaAtaqueAZombies* EstrategiaAtaque;
-
+	AEstrategiaAplastamientoAZ* EstrategiaAplastamientoAZ;
 	float AlturaSalto = 8.0f;
 	float DistanciaInicial;
 	FVector UbicacionInicial;
@@ -79,7 +80,7 @@ public:
 	float TiempoTranscurrido;
 	float TiempoEntreDisparos;
 
-	
+	Publicador* publicadorEnPlanta;
 
 public:
 
@@ -92,28 +93,35 @@ public:
 	// Manejador para una gestión eficiente del temporizador ShotTimerExpired 
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
-	TArray<  APlant* > Plantas;
+	
 
 
 	UPROPERTY(EditAnywhere)
 	APlant* PlantActorReference; // Referencia al actor que contiene el array Plantas
 
-	class AZombie* Zombie;
+	class AZombie* ZombieEnPlanta;
 	
 private:
 	//The Clock Tower of this Subscriber
 	UPROPERTY()
 	class ANotificarPlantas* Notificador;
 
-	virtual void Destroyed() override;
+//	virtual void Destroyed() override;
 
 public:
 	//Called when the Plublisher changed its state, it will execute this Subscriber routine
 	virtual void notificarPocisionZombie(class APublicador* Publicador) override;
 	//Execute this Subscriber routine
-	virtual void Cambios();
+	virtual void Cambios()override;
 	//Set the Clock Tower of this Subscriber
 	void DefinirNotificarPlantas(ANotificarPlantas* myNotificarPlantas);
 	//----------------------------------------------------------------------------
 	FString EstrategiaPlanta;
+
+	// Nueva variable para indicar si la planta ha sido notificada
+	bool _HsidoNotificado = false;
+
+	FVector PosicionActualZombie;
+
+
 };

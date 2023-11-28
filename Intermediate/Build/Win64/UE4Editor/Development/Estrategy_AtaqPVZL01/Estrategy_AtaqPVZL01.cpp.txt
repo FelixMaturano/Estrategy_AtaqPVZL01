@@ -1,2 +1,2 @@
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01.h
+C:\Users\USUARIO\source\repos\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h
+C:\Users\USUARIO\source\repos\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01\Estrategy_AtaqPVZL01.h

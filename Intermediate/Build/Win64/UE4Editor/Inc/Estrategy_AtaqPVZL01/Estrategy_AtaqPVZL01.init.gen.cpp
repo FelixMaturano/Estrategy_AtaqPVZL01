@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategy_AtaqPVZL01_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x871ACEE3,
+				0x099F5A2D,
 				0x0C6CC435,
 				METADATA_PARAMS(nullptr, 0)
 			};

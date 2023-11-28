@@ -30,6 +30,9 @@ void AEstrategiaAplastamientoAZ::Tick(float DeltaTime)
 
 void AEstrategiaAplastamientoAZ::atacarA(APlant* _plantaActual, FVector _ubicacionObjetivo)
 {
+    UE_LOG(LogTemp, Warning, TEXT("LA SEGUNDA ESTRATEGIA:  Salto para aplastar "));
+    GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow, TEXT("Aplastando al Zombie"));
+
     APlant* Plant = _plantaActual;
     Plant->MovementSpeed = 400.0f;
 

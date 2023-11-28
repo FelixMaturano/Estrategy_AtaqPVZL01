@@ -40,17 +40,5 @@ void APublicador::Desuscribirse(AActor* SuscriptorAQuitar)
 
 void APublicador::NotificarSuscriptores()
 {
-	//Loop for each Subscriber
-	for (AActor* Actor : Suscriptores)
-	{
-		//Cast each of them to a concrete Subscriber
-		ISuscriptor* Sub = Cast<ISuscriptor>(Actor);
-		if (Sub)
-		{
-			//Notify each of them that something has changed, so they can execute their own routine
-			Sub->notificarPocisionZombie(this);
-		
-		}
-	}
 }
 

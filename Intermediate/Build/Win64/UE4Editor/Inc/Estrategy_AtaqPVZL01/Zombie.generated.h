@@ -13,38 +13,36 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ESTRATEGY_ATAQPVZL01_Zombie_generated_h
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_SPARSE_DATA
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_RPC_WRAPPERS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_SPARSE_DATA
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execIsActorDestroyed);
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execIsActorDestroyed);
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_INCLASS_NO_PURE_DECLS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
 	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
-	DECLARE_SERIALIZER(AZombie) \
-	virtual UObject* _getUObject() const override { return const_cast<AZombie*>(this); }
+	DECLARE_SERIALIZER(AZombie)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_INCLASS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_INCLASS \
 private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
 	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Estrategy_AtaqPVZL01"), NO_API) \
-	DECLARE_SERIALIZER(AZombie) \
-	virtual UObject* _getUObject() const override { return const_cast<AZombie*>(this); }
+	DECLARE_SERIALIZER(AZombie)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_STANDARD_CONSTRUCTORS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AZombie(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AZombie) \
@@ -57,7 +55,7 @@ private: \
 public:
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_ENHANCED_CONSTRUCTORS \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AZombie(AZombie&&); \
@@ -68,31 +66,31 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AZombie)
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__Subscribers() { return STRUCT_OFFSET(AZombie, Subscribers); }
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__plantasSuscriptores() { return STRUCT_OFFSET(AZombie, plantasSuscriptores); }
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_12_PROLOG
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_GENERATED_BODY_LEGACY \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_16_PROLOG
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_PRIVATE_PROPERTY_OFFSET \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_SPARSE_DATA \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_RPC_WRAPPERS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_INCLASS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_STANDARD_CONSTRUCTORS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_PRIVATE_PROPERTY_OFFSET \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_SPARSE_DATA \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_RPC_WRAPPERS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_INCLASS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_GENERATED_BODY \
+#define Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_PRIVATE_PROPERTY_OFFSET \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_SPARSE_DATA \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_INCLASS_NO_PURE_DECLS \
-	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_15_ENHANCED_CONSTRUCTORS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_PRIVATE_PROPERTY_OFFSET \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_SPARSE_DATA \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_INCLASS_NO_PURE_DECLS \
+	Estrategy_AtaqPVZL01_Source_Estrategy_AtaqPVZL01_Zombie_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

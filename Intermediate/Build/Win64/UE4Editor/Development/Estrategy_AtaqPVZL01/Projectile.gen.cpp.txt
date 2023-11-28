@@ -1,5 +1,5 @@
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h
+C:\Users\USUARIO\source\repos\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Development\Estrategy_AtaqPVZL01\Definitions.Estrategy_AtaqPVZL01.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01/Projectile.h
-C:\TODO\PVZ-1\ZOMBIES-PA\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Projectile.generated.h
+C:\Users\USUARIO\source\repos\Estrategy_AtaqPVZL01\Source\Estrategy_AtaqPVZL01/Projectile.h
+C:\Users\USUARIO\source\repos\Estrategy_AtaqPVZL01\Intermediate\Build\Win64\UE4Editor\Inc\Estrategy_AtaqPVZL01\Projectile.generated.h

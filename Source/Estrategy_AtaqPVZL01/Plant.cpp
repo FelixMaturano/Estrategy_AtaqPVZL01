@@ -10,6 +10,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "Estrategy_AtaqPVZL01GameModeBase.h"
 
 #include "Suscriptor.h"
 
@@ -45,8 +46,6 @@ APlant::APlant()
 	bCanMove = false;
 
 	EstrategiaPlanta = "atacar";
-
-	//TiempoDemuestra = 0.0f;
 }
 
 // Called when the game starts or when spawned
@@ -56,6 +55,8 @@ void APlant::BeginPlay()
 
 	AEstrategiaAtaqueDisparo* estrategiaAtaqueDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
 	setEstrategiaAtaqueAZombies(estrategiaAtaqueDisparo);
+
+
 }
 
 // Called every frame
@@ -64,7 +65,15 @@ void APlant::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	timerhandle += DeltaTime;
 
-	Cambios();
+	atacar(LocalizacionObjetivo);
+
+	if (_HsidoNotificado==true)
+	{
+		AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
+		setEstrategiaAtaqueAZombies(NuevaEstrategia);
+		_HsidoNotificado = false;  // Reinicia la bandera después de cambiar la estrategia
+	}
+	
 }
 
 float APlant::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -106,15 +115,7 @@ void APlant::ShotTimerExpired()
 
 void APlant::setEstrategiaAtaqueAZombies(IEstrategiaAtaqueAZombies* _estrategiaAtaqueAZombies)
 {
-
 	EstrategiaAtaque = Cast<IEstrategiaAtaqueAZombies>(_estrategiaAtaqueAZombies);
-
-	// Log Error if the cast failed
-	if (!EstrategiaAtaque)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
-		UE_LOG(LogTemp, Error, TEXT("Moverse(): The Actor is not a estrategia de movimiento! Are you sure that the Actor implements that interface? "));
-	}
 
 }
 
@@ -124,10 +125,12 @@ void APlant::atacar(const FVector& TargetLocation)
 	
 
 }
-void APlant::Destroyed()
-{
-	Notificador->Desuscribirse(this);
-}
+
+
+//void APlant::Destroyed()
+//{
+//	//Notificador->Desuscribirse(this);
+//}
 void APlant::notificarPocisionZombie(APublicador* Publicador)
 {
 	//Cambios();
@@ -135,63 +138,9 @@ void APlant::notificarPocisionZombie(APublicador* Publicador)
 
 void APlant::Cambios()
 {
-
-	atacar(LocalizacionObjetivo);
-
-	if (timerhandle > 6)
-	{
-		for (int32 i = 0; i < Plantas.Num(); i++)
-		{
-			APlant* plantas = Cast<APlant>(Plantas[i]);
-			if (plantas)
-			{
-				// Crear una nueva instancia de AEstrategiaAplastamientoAZ
-				AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
-				plantas->setEstrategiaAtaqueAZombies(NuevaEstrategia);
-			}
-		}
-	}
-	// Obtén la posición actual del zombie del Notificador
-	FVector PosicionZombie = Notificador->GetPosicionZombie();
-
-	if (PosicionZombie.Y== 0.0f)
-	{
-		EstrategiaPlanta == "EstrategiaAplastamientoAZ";
-
-		// Cambia a la estrategia de ataque con disparo
-		UE_LOG(LogTemp, Warning, TEXT("Zombie a la vista, cambia a la estrategia de ataque con disparo"));
-		AEstrategiaAtaqueDisparo* EstrategiaDisparo = GetWorld()->SpawnActor<AEstrategiaAtaqueDisparo>(AEstrategiaAtaqueDisparo::StaticClass());
-		setEstrategiaAtaqueAZombies(EstrategiaDisparo);
-
-		// Inicializa LocalizacionObjetivo (ajústalo según tus necesidades)
-		LocalizacionObjetivo = FVector(-250.0f, 490.0f, 25.0f);
-	}
-	 if (EstrategiaPlanta == "EstrategiaAplastamientoAZ")
-	 {
-	
-		for (int32 i = 0; i < Plantas.Num(); i++)
-		{
-			APlant* plantas = Cast<APlant>(Plantas[i]);
-			if (plantas)
-			{
-				// Crear una nueva instancia de AEstrategiaAplastamientoAZ
-				AEstrategiaAplastamientoAZ* NuevaEstrategia = GetWorld()->SpawnActor<AEstrategiaAplastamientoAZ>(AEstrategiaAplastamientoAZ::StaticClass());
-				plantas->setEstrategiaAtaqueAZombies(NuevaEstrategia);
-			}
-		}
-	
-	}if (EstrategiaPlanta == "EstategiaDisparo") {
-	
-		atacar(LocalizacionObjetivo);
-	}
-
-	// Realizar el ataque después de cambiar la estrategia
 	
 }
 
 void APlant::DefinirNotificarPlantas(ANotificarPlantas* myNotificarPlantas)
 {
-	////Set the Clock Tower and Subscribe to that
-	//Notificador = myNotificarPlantas;
-	//Notificador->Suscribirse(this);
 }
